@@ -15,7 +15,7 @@
     <ul>
         {% for course in list_of_courses %}
             <li>
-                <h5>{{ course.name }}</h5>
+                <a href="{% url 'course' course.id %}">{{ course.name }}</a>
             </li>
         {% empty %}
             <h4>No courses found!</h4>

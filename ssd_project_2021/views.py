@@ -8,3 +8,9 @@ def home_page(request):
     context = {'list_of_courses': courses}
 
     return render(request, 'home_page.html', context)
+
+
+def course(request, course_id):
+    found_course = Course.objects.get(pk=course_id)
+
+    return render(request, 'course.html', {'course': found_course})
