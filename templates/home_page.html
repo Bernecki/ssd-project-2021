@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+{% if user_name %}
+    <h2>Hello, {{ user_name }}!</h2>
+{% else %}
+    <h2>Hello, user!</h2>
+{% endif %}
+
+{% if list_of_courses %}
+    <ul>
+        {% for course in list_of_courses %}
+            <li>
+                <h5>{{ course.name }}</h5>
+            </li>
+        {% empty %}
+            <h4>No courses found!</h4>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h4>No courses found!</h4>
+{% endif %}
+</body>
+</html>
