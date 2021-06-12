@@ -23,4 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('student/', returningStudents),
     path('student/<id>/', choosen_student),
+    path('student/<id>/achievements', choosen_student_achievements),
+    path('student/<id>/previous_exam', choosen_student_previous_exam),
+    path('student/<id>/taking_exam', choosen_student_taking_exam),
+    path('student/<id>/courses', choosen_student_courses),
 ]

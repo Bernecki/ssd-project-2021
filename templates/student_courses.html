@@ -1,0 +1,19 @@
+{% extends 'student_page.html' %}
+
+{% block student_courses %}
+<p>dupa</p>
+
+
+{% for stu in students %}
+
+<p><a href = "/student/{{stu.id}}"> {{stu.name}} </a> </p>
+
+{% endfor %}
+
+
+{% for course in student_course %}
+
+ <p><a href = "/student/{{stu.id}}"> {{course.final_grade}} </a> </p>
+{% endfor %}
+
+{% endblock student_courses %}

@@ -6,13 +6,34 @@
 </head>
 <body>
     {% if students %}
-        <h1>{{students.name}}</h1>
-        <p>{{ students.index_number }}</p>
-        <p>{{ students.email.address }}</p>
-        <p>{{ students.school_id }}</p>
-        <p>{{ students.login }}</p>
-        <p>{{ students.password }}</p>
+        <div>
+            <h1>{{students.name}} <a href = "/student/"> {{stu.name}} Log out</a></h1>
+        </div>
+        <div style="clear:both"> </div>
+        <div style = "width:200px; float:left">
+            <p><a href = "/student/{{stu.id}}"> Student data </a></p>
+            <p><a href = "/student/{{stu.id}}"> Your courses </a></p>
+            <p><a href = "/student/{{stu.id}}"> Check achievements </a></p>
+            <p><a href = "/student/{{stu.id}}"> Display previous exams </a></p>
+            <p><a href = "/student/{{stu.id}}/courses"> Attempt an exam </a></p>
+        </div>
 
+        <div style ="width:700; float:left">
+            <p>index: {{ students.index_number }}</p>
+            <p>email: {{ students.email.address }}</p>
+            <p>school: {{ students.school_id }}</p>
+            <p>login: {{ students.login }}</p>
+            <p>passoword: {{ students.password }}</p>
+            <p></p>
+
+
+        </div>
+
+
+        <div style="cleat:both"></div>
+        <div>
+            dfg {% block student_courses %} {% endblock student_courses %}
+        </div>
     {% else %}
         <p> Error no student ??(error in file (student_page) </p>
     {% endif %}
