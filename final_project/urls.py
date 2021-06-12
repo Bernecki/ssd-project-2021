@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ssd_project_2021.views import *
+
 
 urlpatterns = [
     path('examsystem/', include('ssd_project_2021.urls')),
     path('admin/', admin.site.urls),
+    path('student/', returningStudents),
+    path('student/<id>/', choosen_student),
 ]

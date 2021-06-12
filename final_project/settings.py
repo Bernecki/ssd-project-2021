@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ssd_project_2021.apps.SsdProject2021Config',
+
+    #test
+    'final_project'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         # TODO Put your credentials here!
         'NAME': 'test',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'root',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '3306',
     }

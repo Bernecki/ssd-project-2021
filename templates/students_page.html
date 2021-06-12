@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Who are you ?</title>
+</head>
+<body>
+    <h1>Who are you</h1>
+
+    {% for stu in students %}
+
+    <p><a href = "/student/{{stu.id}}"> {{stu.name}} </a> </p>
+
+    {% endfor %}
+
+</body>
+</html>

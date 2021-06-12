@@ -68,7 +68,8 @@ class Student(models.Model):
     school = models.ForeignKey(School, models.DO_NOTHING)
     login = models.CharField(unique=True, max_length=250)
     password = models.CharField(max_length=250)
-
+    def __str__(self):
+        return self.name
     class Meta:
         managed = False
         db_table = 'student'

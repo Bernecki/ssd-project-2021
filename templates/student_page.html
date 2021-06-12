@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student page</title>
+</head>
+<body>
+    {% if students %}
+        <h1>{{students.name}}</h1>
+        <p>{{ students.index_number }}</p>
+        <p>{{ students.email.address }}</p>
+        <p>{{ students.school_id }}</p>
+        <p>{{ students.login }}</p>
+        <p>{{ students.password }}</p>
+
+    {% else %}
+        <p> Error no student ??(error in file (student_page) </p>
+    {% endif %}
+</body>
+</html>
