@@ -1,0 +1,18 @@
+{% extends 'student_page.html' %}
+
+{% block student_courses %}
+
+<p>This should show exams that are not to old</p>
+
+
+    {% for assignm in assignment %}
+
+        {% if students.id == assignm.student%}
+            <p><a href = "/student/{{students.id}}/taking_exam/{{assignm.exam}}" > exam_id: {{assignm.exam}} </a> </p>
+        {% endif %}
+
+    {% endfor %}
+
+
+<p>dypa choosing exam</p>
+{% endblock %}

@@ -79,7 +79,8 @@ class StudentCourse(models.Model):
     student = models.ForeignKey(Student, models.DO_NOTHING, blank=True, null=True)
     course = models.ForeignKey(Course, models.DO_NOTHING, blank=True, null=True)
     final_grade = models.IntegerField(blank=True, null=True)
-
+    def __str__(self):
+        return self.student
     class Meta:
         managed = False
         db_table = 'student_course'

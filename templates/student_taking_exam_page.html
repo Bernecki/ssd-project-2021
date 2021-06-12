@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<p>This should show exams chosen exam</p>
 
-</body>
-</html>
+{{exam.id}}
+
+{{students.id}}
+
+{% block question %} {% endblock question %}
+
+
+
+{% if exam %}
+    {% for question in open_question%}
+        {% if question.exam_id == exam.id %}
+            <p>{{question.text}}</p>
+            <p> miejsce na odpowiedz</p>
+            <p><br/></p>
+        {%endif%}
+    {%endfor%}
+    {% for question in closed_question%}
+        {% if question.exam_id == exam.id %}
+            <p>{{question.text}}</p>
+            {% for answer in answer_to_closed_question%}
+                {% if answer.closed_question_id == question.id%}
+                    <p>{{answer.text}}</p>
+                {%endif%}
+            {%endfor%}
+
+            <p><br/></p>
+        {%endif%}
+    {%endfor%}
+
+
+{%endif%}
+
+

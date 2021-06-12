@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'student_page.html' %}
 
-</body>
-</html>
+{% block student_courses %}
+
+<p>This should show old exams</p>
+
+
+    {% for assignm in assignment %}
+
+        {%if students.id == assignm.student%}
+            <p> student: {{assignm.student}} exam:{{assignm.exam}} due_date:{{assignm.due_date}} points:{{assignm.points}}
+                time_started:{{assignm.time_started}} time_ended:{{assignm.time_ended}}</p>
+        {%endif%}
+    {% endfor %}
+
+
+<p>dypa</p>
+{% endblock %}
