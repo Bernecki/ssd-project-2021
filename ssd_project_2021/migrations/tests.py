@@ -1,7 +1,8 @@
-# Create your tests here.
 from django.test import TestCase
 from ssd_project_2021.models import School
 from ssd_project_2021.models import Teacher
+import django
+django.setup()
 
 # Create your tests here.
 

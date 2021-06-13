@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from ssd_project_2021.models import *
 
 
