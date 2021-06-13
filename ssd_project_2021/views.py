@@ -94,11 +94,12 @@ def choosen_student_courses(request, id):
     return render(request, 'student_courses.html', data)
 
 
-def choosen_student_data(request, id):
+def choosen_student_data(request, id, exam_finished=False):
     students_taking_data = Student.objects.get(pk=id)
     school = School.objects.all
     data = {'students': students_taking_data,
-            'school': school}
+            'school': school,
+            'exam_finished': exam_finished}
     return render(request, 'student_data.html', data)
 
 
@@ -141,4 +142,4 @@ def choosen_student_submitting_answers(request, id, id2):
             'answeropen': answerOpen,
             'answerOpenQuestionId': answerOpenQuestionId
             }
-    return render(request, 'submitting_answers.html', data)
+    return choosen_student_data(request, id, exam_finished=True)
