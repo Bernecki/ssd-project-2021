@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ssd_project_2021.models import *
+from .teacher import *
 
 
 # Create your views here.

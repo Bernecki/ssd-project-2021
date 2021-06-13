@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES</title>
+</head>
+<body>
+<h1>Hello, {{ teacher.name }}</h1>
+<h3>Your current courses:</h3>
+{% for course, exams in courses.items %}
+    <a href="teacher_edit_course/{{ course.id }}">{{ course.name }}</a>:
+    <ul>
+        <li><a href="add_exam/{{ course.id }}">Add new exam</a></li>
+        {% for exam in exams %}
+            <li><a href="exam_details/{{ exam.id }}">{{ exam.id }}</a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</body>
+</html>

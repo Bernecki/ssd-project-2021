@@ -29,5 +29,5 @@ urlpatterns = [
     path('student/<id>/taking_exam/<id2>', choosen_student_taking_exam),
     path('student/<id>/data', choosen_student_data),
     path('student/<id>/courses', choosen_student_courses),
-
+    path('teacher/<teacher_id>', teacher_main)
 ]
