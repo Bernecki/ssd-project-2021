@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +9,14 @@
     <title>{{ course.name }}</title>
 </head>
 <body>
-<h1>Here are details of Your course:</h1>
-<h3>Name: {{ course.name }}</h3>
-<h3>Max amount of students: {{ course.maxnumberofstudents }}</h3>
-<h3>School: {{ course.school }}</h3>
-<h3>Teacher: {{ course.teacher }}</h3>
+<div class="padding-top-15 padding-left-15">
+    <h1 class="custom-header padding-bottom-15">Here are details of the course:</h1>
+    <div class="padding-left-15">
+        <h3 class="custom-text padding-bottom-15">Name: {{ course.name }}</h3>
+        <h3 class="custom-text padding-bottom-15">Max amount of students: {{ course.maxnumberofstudents }}</h3>
+        <h3 class="custom-text padding-bottom-15">School: {{ course.school }}</h3>
+        <h3 class="custom-text padding-bottom-15">Teacher: {{ course.teacher }}</h3>
+    </div>
+</div>
 </body>
 </html>

@@ -1,13 +1,13 @@
 {% extends 'student_page.html' %}
 
 {% block student_courses %}
-
-<p>This should show student data</p>
-
-<p>index: {{ students.index_number }}</p>
-<p>email: {{ students.email.address }}</p>
-<p>school: {{ students.school_id }}</p>
-<p>login: {{ students.login }}</p>
-<p>passoword: {{ students.password }}</p>
-
+    <div class="padding-left-15">
+        <p class="custom-text padding-bottom-15">Index number: {{ students.index_number }}</p>
+        <p class="custom-text padding-bottom-15">Email address: {{ students.email_address }}</p>
+        {% for  sch in school %}
+            {% if sch.id == students.school_id %}
+                <p class="custom-text">School: {{ sch.name }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}

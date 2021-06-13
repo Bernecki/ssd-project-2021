@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,26 +9,43 @@
     <title>Student page</title>
 </head>
 <body>
+<div class="padding-top-15 padding-left-15">
     {% if students %}
-        <div>
-            <h1>{{students.name}} <a href = "/student/"> {{stu.name}} Log out</a></h1>
+        <div class="container">
+            <div class="block">
+                <table class="custom-header padding-15">
+                    <tr>
+                        <th>
+                            <a href="/student/{{ students.id }}/data"> Student data </a>
+                        </th>
+                        <th>
+                            <a href="/student/{{ students.id }}/achievements"> Check achievements </a>
+                        </th>
+                        <th>
+                            <a href="/student/{{ students.id }}/previous_exam"> Display previous exams </a>
+                        </th>
+                        <th>
+                            <a href="/student/{{ students.id }}/choosing_exam_to_take"> Attempt an exam </a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="block align-right">
+                <p class="padding-right-15">
+                    <a href="/student/" class="custom-header link-btn">Log out</a>
+                </p>
+            </div>
         </div>
-        <div style="clear:both"> </div>
-        <div style = "width:200px; float:left">
-            <p><a href = "/student/{{students.id}}/data"> Student data </a></p>
-            <p><a href = "/student/{{students.id}}/courses"> Your courses </a></p>
-            <p><a href = "/student/{{students.id}}/achievements"> Check achievements </a></p>
-            <p><a href = "/student/{{students.id}}/previous_exam"> Display previous exams </a></p>
-            <p><a href = "/student/{{students.id}}/choosing_exam_to_take"> Attempt an exam </a></p>
+        <div style="clear:both"></div>
+        <div class="padding-bottom-15">
+            <p class="custom-header">{{ students.name }}</p>
         </div>
-
-
-        <div style="cleat:both"></div>
         <div>
             {% block student_courses %} {% endblock student_courses %}
         </div>
     {% else %}
         <p> Error no student ??(error in file (student_page) </p>
     {% endif %}
+</div>
 </body>
 </html>

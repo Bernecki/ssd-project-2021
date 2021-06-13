@@ -1,5 +1,6 @@
 from django.db import models
-
+from datetime import date
+from django import template
 
 # Create your models here.
 class School(models.Model):
@@ -108,6 +109,18 @@ class Assignment(models.Model):
     class Meta:
         managed = False
         db_table = 'assignment'
+
+    @property
+    def is_past_due(self):
+        returnVariable = False
+        if date.today()>self.due_date:
+            returnVariable = True
+        return "fjfds"
+
+    register = template.Library()
+    @register.filter
+    def get_type(value):
+        return type(value)
 
 
 class ClosedQuestion(models.Model):

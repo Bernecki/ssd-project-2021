@@ -1,18 +1,9 @@
 {% extends 'student_page.html' %}
 
 {% block student_courses %}
-
-<p>This should show student curses</p>
-
-
     {% for course in student_course %}
-
-        {% if students.id == course.student%}
-            <p> studend id: {{course.student}} course id:{{course.course}} final grade: {{course.final_grade}}</p>
+        {% if students.id == course.student %}
+            <p> studend id: {{ course.student }} course id:{{ course.course }} final grade: {{ course.final_grade }}</p>
         {% endif %}
-
     {% endfor %}
-
-
-<p>dypa</p>
 {% endblock %}

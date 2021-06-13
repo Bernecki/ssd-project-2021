@@ -1,17 +1,21 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Who are you ?</title>
+    <title>Students</title>
 </head>
 <body>
-    <h1>Who are you</h1>
-
+<div class="padding-left-15 padding-top-15">
+    <h1 class="custom-header padding-bottom-15">Who are you</h1>
     {% for stu in students %}
-
-    <p><a href = "/student/{{stu.id}}/data"> {{stu.name}} </a> </p>
-
+        <div class="list-element align">
+            <a href="/student/{{ stu.id }}/data"> {{ stu.name }} </a>
+        </div>
     {% endfor %}
-
+</div>
 </body>
 </html>
