@@ -1,21 +1,26 @@
 {% extends 'student_page.html' %}
 
 {% block student_courses %}
-
-
-{%for course1 in courses%}
-    {% for course2 in student_course %}
-        {% if students.id == course2.student %}
-                {% if course1.id == course2.course %}
-
-                    <p>  course name :{{course1.name}} </p>
-                    <p>final grade: {{course2.final_grade}}</p>
-                    <br/>
-
-                {%endif%}
-
-        {% endif %}
-    {% endfor %}
-{% endfor %}
-
+    <div class="padding-left-15">
+        {% for course1 in courses %}
+            {% for course2 in student_course %}
+                {% if students.id == course2.student %}
+                    {% if course1.id == course2.course %}
+                        <div class="wrapper">
+                            <div class="container padding-bottom-15">
+                                <div class="block">
+                                    <p class="custom-text">Course name: </p>
+                                </div>
+                                <div class="block">
+                                    <a href="{% url 'course' course1.id %}"
+                                       class="custom-text link-btn">{{ course1.name }}</a>
+                                </div>
+                            </div>
+                            <p class="custom-text">Final grade: {{ course2.final_grade }}</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}

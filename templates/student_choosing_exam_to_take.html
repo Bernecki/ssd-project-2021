@@ -1,16 +1,19 @@
 {% extends 'student_page.html' %}
 
 {% block student_courses %}
-
-
-
     {% for assignm in assignment %}
-
-        {% if students.id == assignm.student%}
-            <p><a href = "/student/{{students.id}}/taking_exam/{{assignm.exam}}" > exam_id: {{assignm.exam}} </a> </p>
+        {% if students.id == assignm.student %}
+            <div class="wrapper padding-bottom-15">
+                <div class="container">
+                    <div class="block">
+                        <p class="custom-text">Exam: </p>
+                    </div>
+                    <div class="block">
+                        <a href="/student/{{ students.id }}/taking_exam/{{ assignm.exam }}"
+                           class="custom-text link-btn">{{ assignm.exam }}</a>
+                    </div>
+                </div>
+            </div>
         {% endif %}
-
     {% endfor %}
-
-
 {% endblock %}

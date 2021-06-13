@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +9,30 @@
     <title>Home page</title>
 </head>
 <body>
-{% if user_name %}
-    <h2>Hello, {{ user_name }}!</h2>
-{% else %}
-    <h2>Hello, user!</h2>
-{% endif %}
+<div class="padding-top-15 padding-left-15 padding-bottom-15">
+    {% if user_name %}
+        <h2 class="custom-header">Hello, {{ user_name }}!</h2>
+    {% else %}
+        <h2 class="custom-header">Hello, user!</h2>
+    {% endif %}
+</div>
 
-{% if list_of_courses %}
-    <ul>
-        {% for course in list_of_courses %}
-            <li>
-                <a href="{% url 'course' course.id %}">{{ course.name }}</a>
-            </li>
-        {% empty %}
-            <h4>No courses found!</h4>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h4>No courses found!</h4>
-{% endif %}
+<div class="align">
+    {% if list_of_courses %}
+        <ul>
+            {% for course in list_of_courses %}
+                <li>
+                    <div class="list-element">
+                        <a href="{% url 'course' course.id %}">{{ course.name }}</a>
+                    </div>
+                </li>
+            {% empty %}
+                <h4>No courses found!</h4>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4>No courses found!</h4>
+    {% endif %}
+</div>
 </body>
 </html>

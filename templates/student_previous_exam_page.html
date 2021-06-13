@@ -1,16 +1,15 @@
 {% extends 'student_page.html' %}
 
 {% block student_courses %}
-
-
     {% for assignm in assignment %}
-        {%if students.id == assignm.student%}
-
-                <p> student: {{assignm.student}} exam:{{assignm.exam}} due_date:{{assignm.due_date}} points:{{assignm.points}}
-                    time_started:{{assignm.time_started}} time_ended:{{assignm.time_ended}}</p>
-
-        {%endif%}
+        {% if students.id == assignm.student %}
+            <div class="wrapper">
+                <p class="custom-text">Exam: {{ assignm.exam }}</p>
+                <p class="custom-text">Due date: {{ assignm.due_date }}</p>
+                <p class="custom-text">Points: {{ assignm.points }}</p>
+                <p class="custom-text">When was started: {{ assignm.time_started }}</p>
+                <p class="custom-text">When was ended: {{ assignm.time_ended }}</p>
+            </div>
+        {% endif %}
     {% endfor %}
-
-
 {% endblock %}

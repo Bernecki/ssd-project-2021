@@ -1,36 +1,61 @@
-
-exam_id:{{exam.id}}
-
-student_id:{{students.id}}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
 {% block question %} {% endblock question %}
 
-
-<form action = {{exam.id}}/submitting_answers method = "POST" enctype="multipart/form-data">
-{% csrf_token %}
-{% if exam %}
-
-    {% for question in open_question%}
-        {% if question.exam_id == exam.id %}
-            <p>{{question.text}}</p>
-            <input type = "hidden" name = "answeropenquestionid" value = {{question.id}} />
-            <textarea id={{question.id}} name="answeropen" rows="10" cols="100" maxlength = {{question.character_limit}} ></textarea>
-            <p><br/></p>
-        {%endif%}
-    {%endfor%}
-    {% for question in closed_question%}
-        {% if question.exam_id == exam.id %}
-            <p>{{question.text}}</p>
-            {% for answer in answer_to_closed_question%}
-                {% if answer.closed_question_id == question.id%}
-                    <input type='checkbox' name="answerclosed" value={{answer.id}}> {{answer.text}} <br />
-                {%endif%}
-            {%endfor%}
-
-            <p><br/></p>
-        {%endif%}
-    {%endfor%}
-<button type="submit" >SUBMIT</button>
-{%endif%}
-</form>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam page</title>
+</head>
+<body>
+<div class="padding-left-15 padding-top-15">
+    <div class="padding-bottom-15 align-left">
+        <div>
+            <p class="custom-header">Details:</p>
+        </div>
+        <div class="padding-left-15">
+            <p class="custom-text">Exam: {{ exam.id }}</p>
+            <p class="custom-text">Student: {{ students.name }}</p>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <form action={{ exam.id }}/submitting_answers method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if exam %}
+            {% for question in open_question %}
+                {% if question.exam_id == exam.id %}
+                    <div class="padding-bottom-15">
+                        <p class="custom-header">{{ question.text }}</p>
+                        <div class="padding-left-15">
+                            <input type="hidden" name="answeropenquestionid" value={{ question.id }}/>
+                            <textarea name="answeropen" class="custom-text" rows="10" cols="100"
+                                      maxlength={{ question.character_limit }} id={{ question.id }}></textarea>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% for question in closed_question %}
+                {% if question.exam_id == exam.id %}
+                    <div class="padding-bottom-15">
+                        <p class="custom-header padding-bottom-5">{{ question.text }}</p>
+                        <div class="padding-left-15">
+                            {% for answer in answer_to_closed_question %}
+                                {% if answer.closed_question_id == question.id %}
+                                    <input type='checkbox' class="custom-text" name="answerclosed"
+                                           value={{ answer.id }}>
+                                    {{ answer.text }}
+                                    <br/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit">Submit</button>
+        {% endif %}
+    </form>
+</div>
+</body>
