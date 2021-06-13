@@ -23,12 +23,7 @@ student_id:{{students.id}}
             <p>{{question.text}}</p>
             {% for answer in answer_to_closed_question%}
                 {% if answer.closed_question_id == question.id%}
-                    {% if question.more_than_one_answer == 0%}
-                    <input type='radio' name="answerclosed" value={{answer.id}}> {{answer.text}} <br />
-                    {% endif %}
-                    {% if question.more_than_one_answer == 1%}
                     <input type='checkbox' name="answerclosed" value={{answer.id}}> {{answer.text}} <br />
-                    {% endif %}
                 {%endif%}
             {%endfor%}
 

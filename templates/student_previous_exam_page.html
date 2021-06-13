@@ -3,12 +3,12 @@
 {% block student_courses %}
 
 
-
     {% for assignm in assignment %}
-
         {%if students.id == assignm.student%}
-            <p> student: {{assignm.student}} exam:{{assignm.exam}} due_date:{{assignm.due_date}} points:{{assignm.points}}
-                time_started:{{assignm.time_started}} time_ended:{{assignm.time_ended}}</p>
+
+                <p> student: {{assignm.student}} exam:{{assignm.exam}} due_date:{{assignm.due_date}} points:{{assignm.points}}
+                    time_started:{{assignm.time_started}} time_ended:{{assignm.time_ended}}</p>
+
         {%endif%}
     {% endfor %}
 

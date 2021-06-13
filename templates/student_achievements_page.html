@@ -2,6 +2,20 @@
 
 {% block student_courses %}
 
-I THINK ITS THE SAME AS COURSES
+
+{%for course1 in courses%}
+    {% for course2 in student_course %}
+        {% if students.id == course2.student %}
+                {% if course1.id == course2.course %}
+
+                    <p>  course name :{{course1.name}} </p>
+                    <p>final grade: {{course2.final_grade}}</p>
+                    <br/>
+
+                {%endif%}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
 
 {% endblock %}

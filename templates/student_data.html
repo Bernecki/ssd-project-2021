@@ -5,6 +5,10 @@
 
 <p>index: {{ students.index_number }}</p>
 <p>email: {{ students.email_address }}</p>
-<p>school: {{ students.school_id }}</p>
+{%for  sch in school%}
+    {% if sch.id == students.school_id %}
+        <p>school: {{ sch.name }}</p>
+    {%endif%}
+{%endfor%}
 
 {% endblock %}

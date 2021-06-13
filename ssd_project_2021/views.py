@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from ssd_project_2021.models import *
 from django.core import serializers
 from .teacher import *
+import datetime
 from django.forms.models import model_to_dict
 from django import forms
 from django.utils.datastructures import MultiValueDictKeyError
@@ -32,15 +33,22 @@ def choosen_student(request,id):
     return render(request,'student_page.html',data)
 
 def choosen_student_achievements(request,id):
-    students_achievements = Student.objects.get(pk=id)
-    data = {'students' : students_achievements}
+    students_taking_courses = Student.objects.get(pk=id)
+    student_course = StudentCourse.objects.values('student','course','final_grade')
+    courses = Course.objects.all
+    data = {'students' : students_taking_courses,
+            'student_course': student_course,
+            'courses':courses
+            }
     return render(request,'student_achievements_page.html',data)
 
 def choosen_student_previous_exam(request,id):
     students_exam = Student.objects.get(pk=id)
     assignment = Assignment.objects.values('student','exam','due_date','points','time_started','time_ended')
+    date = datetime.datetime.now()
     data = {'students': students_exam,
-            'assignment': assignment,}
+            'assignment': assignment,
+            'date':date}
     return render(request,'student_previous_exam_page.html',data)
 
 def choosen_student_taking_exam(request,id,id2):
@@ -72,7 +80,6 @@ def choosen_student_choosing_exam_to_take(request,id):
     return render(request,'student_choosing_exam_to_take.html',data)
 
 def choosen_student_courses(request,id):
-    print(id)
     students_taking_courses = Student.objects.get(pk=id)
     student_course = StudentCourse.objects.values('student','course','final_grade')
     data = {'students' : students_taking_courses, 'student_course': student_course}
@@ -80,7 +87,9 @@ def choosen_student_courses(request,id):
 
 def choosen_student_data(request,id):
     students_taking_data = Student.objects.get(pk=id)
-    data = {'students' : students_taking_data}
+    school = School.objects.all
+    data = {'students' : students_taking_data,
+            'school': school}
     return render(request,'student_data.html',data)
 
 def choosen_student_submitting_answers(request,id,id2):
