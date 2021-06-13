@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ssd_project_2021.models import *
+from django.core import serializers
 from .teacher import *
-
+from django.forms.models import model_to_dict
+from django import forms
+from django.utils.datastructures import MultiValueDictKeyError
 
 # Create your views here.
 def home_page(request):
@@ -79,3 +82,44 @@ def choosen_student_data(request,id):
     students_taking_data = Student.objects.get(pk=id)
     data = {'students' : students_taking_data}
     return render(request,'student_data.html',data)
+
+def choosen_student_submitting_answers(request,id,id2):
+    students_taking_exam = Student.objects.get(pk=id)
+    exam = Exam.objects.get(pk=id2)
+    assignment = Assignment.objects.values('student', 'exam', 'due_date', 'points', 'time_started', 'time_ended')
+    closed_question = ClosedQuestion.objects.all
+    open_question = OpenQuestion.objects.all
+    answer_to_closed_question = Answer.objects.all
+    answerClosed = request.POST.getlist('answerclosed')
+    answerOpen = request.POST.getlist('answeropen')
+    answerOpenQuestionId = request.POST.getlist('answeropenquestionid')
+    points = []
+    for a1 in answerClosed:
+        points.append(Answer.objects.get(pk = a1))
+
+    b=0
+    for a in answerClosed:
+        p=StudentAnswer(student_id = students_taking_exam.id, answer_id = a, is_selected = 1, points_for_answer = points[b].is_correct)
+        p.save()
+        b+=1
+
+    b = 0
+    for a in answerOpen:
+        p = StudentOpenQuestion(student_id=students_taking_exam.id, open_question_id=answerOpenQuestionId[b], is_graded_by_teacher = 0,
+                          points_for_answer=0,student_answer = a)
+        p.save()
+        b += 1
+
+
+    data = {'students': students_taking_exam,
+            'assignment': assignment,
+            'closed_question': closed_question,
+            'open_question': open_question,
+            'exam': exam,
+            'answer_to_closed_question': answer_to_closed_question,
+            'answerclosed':answerClosed,
+            'answeropen': answerOpen,
+            'answerOpenQuestionId': answerOpenQuestionId
+            }
+    return render(request,'submitting_answers.html',data)
+

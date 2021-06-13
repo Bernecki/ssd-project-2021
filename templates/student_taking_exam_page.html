@@ -1,18 +1,20 @@
-<p>This should show exams chosen exam</p>
 
-{{exam.id}}
+exam_id:{{exam.id}}
 
-{{students.id}}
+student_id:{{students.id}}
 
 {% block question %} {% endblock question %}
 
 
-
+<form action = {{exam.id}}/submitting_answers method = "POST" enctype="multipart/form-data">
+{% csrf_token %}
 {% if exam %}
+
     {% for question in open_question%}
         {% if question.exam_id == exam.id %}
             <p>{{question.text}}</p>
-            <p> miejsce na odpowiedz</p>
+            <input type = "hidden" name = "answeropenquestionid" value = {{question.id}} />
+            <textarea id={{question.id}} name="answeropen" rows="10" cols="100" maxlength = {{question.character_limit}} ></textarea>
             <p><br/></p>
         {%endif%}
     {%endfor%}
@@ -21,15 +23,19 @@
             <p>{{question.text}}</p>
             {% for answer in answer_to_closed_question%}
                 {% if answer.closed_question_id == question.id%}
-                    <p>{{answer.text}}</p>
+                    {% if question.more_than_one_answer == 0%}
+                    <input type='radio' name="answerclosed" value={{answer.id}}> {{answer.text}} <br />
+                    {% endif %}
+                    {% if question.more_than_one_answer == 1%}
+                    <input type='checkbox' name="answerclosed" value={{answer.id}}> {{answer.text}} <br />
+                    {% endif %}
                 {%endif%}
             {%endfor%}
 
             <p><br/></p>
         {%endif%}
     {%endfor%}
-
-
+<button type="submit" >SUBMIT</button>
 {%endif%}
-
+</form>
 
