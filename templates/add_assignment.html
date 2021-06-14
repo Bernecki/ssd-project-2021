@@ -1,0 +1,44 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add assignment</title>
+</head>
+<body>
+<form class="" action="add_assignment" method="POST">
+    {% csrf_token %}
+<datalist id="exam">
+    {% for en in exam %}
+  <option value={{en.id}}>
+    {% endfor %}
+</datalist>
+
+<datalist id="student">
+    {% for st in student %}
+  <option value={{st.id}}>
+    {% endfor %}
+</datalist>
+
+
+student_id <input list="student" name ="student_id">
+
+exam: <input list="exam" name ="exam_id">
+
+start time: <input type="date" name ="start_time">
+end time: <input type="date" name ="end_time">
+points: <input type="number" name ="points">
+
+
+<input type="Submit" name="submit_exam" value="Submit"/>
+
+</form>
+
+<a href="/teacher/1"> go back </a>
+
+
+</body>
+</html>

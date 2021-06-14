@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,7 @@ Open questions:
 <form class="" action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    Duration: <input type="text" name="duration"/> <br>
+    Duration: <input type="text" name="duration" value="30" /> <br>
     <input type="Submit" name="submit_exam" value="Submit"/>
 </form>
 </body>

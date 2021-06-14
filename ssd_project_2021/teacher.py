@@ -91,3 +91,22 @@ def add_number_of_answers(request, teacher_id, course_id):
         questions['closed'].append(question)
         return redirect('/teacher/{}/add_exam/{}'.format(teacher_id, course_id))
     return render(request, 'answers_to_closed_question.html')
+
+
+def add_assignment(request, teacher_id):
+    student = Student.objects.all
+    exam = Exam.objects.all
+    data = {'student': student,
+            'exam': exam}
+    if request.method == 'POST':
+        student_id1 =request.POST.get('student_id')
+        exam_id1 = request.POST.get('exam_id')
+        start_time1 = request.POST.get('start_time')
+        end_time1 = request.POST.get('end_time')
+        points1 = request.POST.get('points')
+        p = Assignment(student_id = student_id1, exam_id=exam_id1, due_date=start_time1,points= points1 , time_started=start_time1,time_ended=end_time1 )
+        p.save()
+
+    return render(request, 'add_assignment.html', data)
+
+

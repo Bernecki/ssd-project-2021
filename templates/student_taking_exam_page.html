@@ -30,7 +30,7 @@
                     <div class="padding-bottom-15">
                         <p class="custom-header">{{ question.text }}</p>
                         <div class="padding-left-15">
-                            <input type="hidden" name="answeropenquestionid" value={{ question.id }}/>
+                            <input type="hidden" name="answeropenquestionid" value={{ question.id }}>
                             <textarea name="answeropen" class="custom-text" rows="10" cols="100"
                                       maxlength={{ question.character_limit }} id={{ question.id }}></textarea>
                         </div>

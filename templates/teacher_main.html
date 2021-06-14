@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,12 @@
     <title>Teacher</title>
 </head>
 <body>
+<div class="padding-top-15 padding-left-15">
+<th>
 <h1>Hello, {{ teacher.name }}</h1>
+</th>
+    <br/>
+    <div class="block">
 <h3>Your current courses:</h3>
 {% for course, exams in courses.items %}
     <a href="teacher_edit_course/{{ course.id }}">{{ course.name }}</a>
@@ -15,7 +24,13 @@
         {% for exam in exams %}
             <li><a href="exam_details/{{ exam.id }}">{{ exam.id }}</a></li>
         {% endfor %}
+        <br/>
     </ul>
 {% endfor %}
+<button><a href="{{ teacher.id }}/add_assignment">Add new assignment</a></button> <br>
+    </div>
+</div>
+
+
 </body>
 </html>

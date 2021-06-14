@@ -1,4 +1,6 @@
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <form action="add_closed_question" method="get">
 Number of answers<input type="number", name = "numberOfAnswers">
 <input type="Submit" name="submit_question" value="Submit"/>
