@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add question</title>
+</head>
+<body>
+<h3>Question:</h3>
+<form class="" action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <textarea name="question" class="custom-text" rows="10" cols="100"
+          maxlength={{ question.character_limit }} id={{ question.id }}></textarea> <br>
+    <input type="Submit" name="submit_question" value="Submit"/>
+</form>
+</body>
+</html>

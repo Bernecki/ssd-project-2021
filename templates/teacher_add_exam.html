@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add exam</title>
+</head>
+<body>
+<button><a href="{{ course_id }}/add_open_question">Add open question</a></button>
+<button><a href="{{ course_id }}/add_closed_question">Add closed question</a></button>
+<br>
+<br>
+Open questions:
+<ul>
+    {% for question in questions.open %}
+        <li>{{ question }}</li>
+    {% endfor %}
+</ul>
+<form class="" action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    Duration: <input type="text" name="duration"/> <br>
+    <input type="Submit" name="submit_exam" value="Submit"/>
+</form>
+</body>
+</html>
