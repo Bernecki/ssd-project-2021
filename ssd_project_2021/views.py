@@ -50,7 +50,7 @@ def choosen_student_achievements(request, id):
 def choosen_student_previous_exam(request, id):
     students_exam = Student.objects.get(pk=id)
     assignment = Assignment.objects.values('student', 'exam', 'due_date', 'points', 'time_started', 'time_ended')
-    date = datetime.datetime.now()
+
     data = {'students': students_exam,
             'assignment': assignment,
             'date': date}

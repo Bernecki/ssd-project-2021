@@ -33,4 +33,6 @@ urlpatterns = [
     path('teacher/<teacher_id>', teacher_main),
     path('teacher/<teacher_id>/add_exam/<course_id>', teacher_add_exam),
     path('teacher/<teacher_id>/add_exam/<course_id>/add_open_question', add_open_question),
+    path('teacher/<teacher_id>/add_exam/<course_id>/add_closed_question', add_closed_question),
+    path('teacher/<teacher_id>/add_exam/<course_id>/answers_to_closed_question', add_number_of_answers),
 ]

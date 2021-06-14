@@ -6,12 +6,15 @@
 </head>
 <body>
 <button><a href="{{ course_id }}/add_open_question">Add open question</a></button>
-<button><a href="{{ course_id }}/add_closed_question">Add closed question</a></button>
+<button><a href="{{ course_id }}/answers_to_closed_question">Add closed question</a></button>
 <br>
 <br>
 Open questions:
 <ul>
     {% for question in questions.open %}
+        <li>{{ question }}</li>
+    {% endfor %}
+    {% for question in questions.closed %}
         <li>{{ question }}</li>
     {% endfor %}
 </ul>

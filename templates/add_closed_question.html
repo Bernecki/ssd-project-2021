@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add question</title>
+</head>
+<body>
+<h3>Question:</h3>
+<form class="" action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <textarea name="question" class="custom-text" rows="10" cols="100"
+          maxlength={{ question.character_limit }} id={{ question.id }}></textarea> <br>
+
+
+    {% for n in number_of_answers %}
+    <h4>Answer {{n}} :</h4>
+    <input type="checkbox" id="correctAnswer" name="correct_answers" value={{n}} >
+    <p><textarea name="answer" class="custom-text" rows="2" cols="100"></textarea> <br></p>
+    {% endfor %}
+
+    {%for a in previousAnswers%}
+         <input type="hidden" name="answerId" value={{ a.id }} >
+    {%endfor%}
+    {%for q in previousQuestions%}
+        <input type="hidden" name="questionId" value={{ q.id }} >
+    {%endfor%}
+
+
+
+
+    <input type="Submit" name="submit_question" value="Submit"/>
+</form>
+</body>
+</html>
