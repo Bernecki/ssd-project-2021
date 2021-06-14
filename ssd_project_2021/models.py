@@ -4,7 +4,6 @@ from django import template
 
 # Create your models here.
 class School(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     school_type = models.CharField(max_length=150)
     contact_number = models.CharField(max_length=45)
@@ -19,7 +18,6 @@ class School(models.Model):
 
 
 class Teacher(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=150)
     academic_degree = models.CharField(max_length=150, blank=True, null=True)
     email_address = models.CharField(max_length=200)
@@ -37,7 +35,6 @@ class Teacher(models.Model):
 
 # TODO Migrate to admin.py if needed
 class Admin(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=150)
     login = models.CharField(unique=True, max_length=255)
     password = models.CharField(max_length=255)
@@ -50,7 +47,6 @@ class Admin(models.Model):
 
 
 class Course(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     maxnumberofstudents = models.IntegerField(db_column='maxNumberOfStudents')  # Field name made lowercase.
     school = models.ForeignKey('School', models.DO_NOTHING)
@@ -62,7 +58,6 @@ class Course(models.Model):
 
 
 class Student(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=150)
     index_number = models.CharField(max_length=50)
     email_address = models.CharField(max_length=200)
@@ -88,7 +83,6 @@ class StudentCourse(models.Model):
 
 
 class Exam(models.Model):
-    id = models.IntegerField(primary_key=True)
     duration = models.IntegerField()
     teacher = models.ForeignKey('Teacher', models.DO_NOTHING)
     course = models.ForeignKey(Course, models.DO_NOTHING)
@@ -124,7 +118,6 @@ class Assignment(models.Model):
 
 
 class ClosedQuestion(models.Model):
-    id = models.IntegerField(primary_key=True)
     text = models.CharField(max_length=255, blank=True, null=True)
     image = models.CharField(max_length=255, blank=True, null=True)
     time_limit = models.IntegerField(blank=True, null=True)
@@ -137,7 +130,6 @@ class ClosedQuestion(models.Model):
 
 
 class Answer(models.Model):
-    id = models.IntegerField(primary_key=True)
     text = models.CharField(max_length=255, blank=True, null=True)
     image = models.CharField(max_length=255, blank=True, null=True)
     is_correct = models.IntegerField()
@@ -160,7 +152,6 @@ class StudentAnswer(models.Model):
 
 
 class OpenQuestion(models.Model):
-    id = models.IntegerField(primary_key=True)
     text = models.CharField(max_length=255, blank=True, null=True)
     image = models.CharField(max_length=255, blank=True, null=True)
     time_limit = models.IntegerField(blank=True, null=True)
